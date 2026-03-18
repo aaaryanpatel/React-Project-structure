@@ -1,0 +1,22 @@
+import { renderHook } from '@testing-library/react';
+import { PropsWithChildren } from 'react';
+
+import {{ pascalCase name }}, { use{{ pascalCase name }} } from './index';
+
+const wrapper = ({ children }: PropsWithChildren) => (
+  <{{ pascalCase name }}>{children}</{{ pascalCase name }}>
+);
+
+describe('use{{ pascalCase name }} hook', () => {
+  it('should be defined within provider', () => {
+    const { result } = renderHook(() => use{{ pascalCase name }}(), { wrapper });
+
+    expect(result.current).toBeDefined();
+  });
+
+  it('should throw when used outside provider', () => {
+    expect(() => {
+      renderHook(() => use{{ pascalCase name }}());
+    }).toThrow('{{ pascalCase name }}Context must be used within a {{ pascalCase name }}Provider');
+  });
+});
